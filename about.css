@@ -1,0 +1,428 @@
+/* ============================================================
+   ABOUT PAGE — BASE
+   ============================================================ */
+
+.about-page main {
+  padding-top: 0px; /* 헤더 높이 */
+}
+
+.about-section {
+  padding: 120px 0;
+}
+
+.about-section .section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.about-section .section-sub {
+  font-size: 16px;
+  color: var(--fg-muted);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   ABOUT HERO
+   ============================================================ */
+
+/* main은 위에서 헤더 높이만큼만 띄워두자 */
+.about-page main {
+  padding-top: 0px; /* 헤더 높이랑 맞추기 */
+}
+
+.about-hero {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+/* 🎥 배경 동영상 */
+.about-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(
+    0.45
+  ); /* 너무 어두우면 0.6, 너무 밝으면 0.3 이런 식으로 조절 */
+  z-index: -1;
+}
+
+/* 헤더 아래부터 화면 한 장 꽉 채우면서 수직 가운데 정렬 */
+.about-hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  min-height: calc(100vh - 68px); /* 헤더 빼고 남은 높이 */
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 60px;
+  align-items: center; /* ✅ 수직 가운데 정렬 */
+}
+
+.about-hero-main {
+  max-width: 640px;
+}
+
+/* 킥커 주황색 */
+.about-hero-kicker {
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #f97316;
+  margin-bottom: 12px;
+}
+
+.about-hero-title {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-hero-desc {
+  font-size: 17px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+/* 우측 동그라미 */
+.about-hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-hero-blob {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 10%,
+    rgba(249, 115, 22, 0.9),
+    rgba(15, 17, 20, 0.5) 55%,
+    #020617 90%
+  );
+  opacity: 0.9;
+}
+
+/* scroll down은 hero 맨 아래 중앙 */
+.scroll-down--about {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+}
+
+/* 반응형 */
+@media (max-width: 960px) {
+  .about-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .about-hero-visual {
+    display: none;
+  }
+
+  .about-hero-title {
+    font-size: 36px;
+  }
+}
+
+/* ============================================================
+   2. WHO WE ARE
+   ============================================================ */
+
+.about-who {
+  background: #0f1114;
+}
+
+.about-who-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 56px;
+}
+
+.about-who-text p {
+  font-size: 16px;
+  color: var(--fg-muted);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+.about-who-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-tag {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: #e5e7eb;
+  font-size: 13px;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* ============================================================
+   3. PHILOSOPHY
+   ============================================================ */
+
+.about-philosophy {
+  background: #050608;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.about-philosophy-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.philo-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.philo-card {
+  padding: 18px 14px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.philo-card-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f97316;
+  margin-bottom: 6px;
+}
+
+.philo-card-sub {
+  font-size: 15px;
+  color: #e5e7eb;
+  margin-bottom: 6px;
+}
+
+.philo-card-desc {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   4. WHAT WE DO
+   ============================================================ */
+
+.about-what {
+  background: #0f1114;
+}
+
+.about-what-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-what-graph {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.about-what-graph::before,
+.about-what-graph::after {
+  content: "";
+  position: absolute;
+  background: rgba(148, 163, 184, 0.4);
+}
+
+.about-what-graph::before {
+  /* 가로 */
+  height: 1px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+}
+
+.about-what-graph::after {
+  /* 세로 */
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+}
+
+.what-card {
+  padding: 20px 18px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.what-card-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.what-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.what-card-desc {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   5. HISTORY / JOURNEY
+   ============================================================ */
+
+.about-history {
+  background: #050608;
+}
+
+.about-history-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.timeline {
+  margin-top: 36px;
+  padding-left: 26px;
+  border-left: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -8px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #f97316;
+  background: #0f172a;
+}
+
+.timeline-year {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e5e7eb;
+  margin-bottom: 6px;
+}
+
+.timeline-desc {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   6. NUMBERS
+   ============================================================ */
+
+.about-numbers {
+  background: #0b0e11;
+}
+
+.about-numbers-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.stat-card {
+  padding: 20px 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.stat-number {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f97316;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #e5e7eb;
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .philo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-hero-title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .philo-grid,
+  .stats-grid,
+  .about-what-graph {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-visual {
+    display: none;
+  }
+}
