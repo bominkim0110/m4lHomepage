@@ -6,10 +6,6 @@
   padding-top: 0px; /* 헤더 높이 */
 }
 
-.about-section {
-  padding: 120px 0;
-}
-
 .about-section .section-title {
   font-size: 32px;
   font-weight: 700;
@@ -24,405 +20,1038 @@
 }
 
 /* ============================================================
-   ABOUT HERO
+   ABOUT LANDING HERO
    ============================================================ */
 
-/* main은 위에서 헤더 높이만큼만 띄워두자 */
-.about-page main {
-  padding-top: 0px; /* 헤더 높이랑 맞추기 */
+.about-landing {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  background: radial-gradient(
+    circle at 0% 100%,
+    #111827 0,
+    #020617 45%,
+    #000000 100%
+  );
 }
 
-.about-hero {
-  position: relative;
-  background: #000;
+.about-landing-inner {
+  max-width: 900px;
+  padding: 0 24px;
+  margin-top: -30px; /* 텍스트 위치 조절 */
+}
+
+/* 문장 자체의 폰트 스타일만, 색은 JS/CSS에서 처리 */
+.about-landing-kicker {
+  font-family: var(--font-heading);
+  font-size: 70px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #f9fafb; /* 실패했을 때를 위한 기본색 */
+}
+
+.about-landing-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 12px;
+  color: #f3f4f6;
+}
+
+.scroll-down--about {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .about-landing-kicker {
+    font-size: 40px;
+  }
+  .about-landing-title {
+    font-size: 20px;
+  }
+}
+
+/* ============================================================
+   공통 ABOUT SECTION
+   ============================================================ */
+
+.about-section {
+  min-height: 100vh; /* 풀스크린 느낌 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  text-align: center;
+  background: #050608;
+}
+
+.about-section-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* 라벨 (Who we are 작은 텍스트) */
+.about-section-label {
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(249, 250, 251, 0.6);
+  margin-bottom: 16px;
+}
+
+/* 메인 문장 */
+.about-section-text {
+  font-size: 28px;
+  line-height: 1.7;
+  font-weight: 500;
+  color: #f9fafb;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* ------------------------------------------------------------
+   LOGO BREAK
+   ------------------------------------------------------------ */
+
+.about-section--logo {
+  background: #000000;
+}
+
+.about-logo-wrap {
+  margin-bottom: 24px;
+}
+
+.about-logo {
+  height: 40px;
+  filter: brightness(0) invert(1); /* 흰색처럼 보이게 */
+}
+
+.about-logo-caption {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #e5e7eb;
+}
+
+/* ------------------------------------------------------------
+   반응형
+   ------------------------------------------------------------ */
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 0 20px;
+  }
+
+  .about-section-text {
+    font-size: 22px;
+  }
+
+  .about-logo-caption {
+    font-size: 18px;
+  }
+
+  .about-section--philosophy {
+    padding: 80px 20px 100px;
+  }
+
+  .about-philo-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ============================================================
+   SPLIT TEXT – WORD UNIT (We / create / culture)
+   ============================================================ */
+
+/* 각 단어를 감싸는 껍데기 */
+.split-word {
+  display: inline-block;
   overflow: hidden;
 }
 
-/* 🎥 배경 동영상 */
-.about-hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(
-    0.45
-  ); /* 너무 어두우면 0.6, 너무 밝으면 0.3 이런 식으로 조절 */
-  z-index: -1;
+/* 실제 단어 span */
+.split-word-inner {
+  display: inline-block;
+  transform: translateY(120%);
+  opacity: 0;
 }
 
-/* 헤더 아래부터 화면 한 장 꽉 채우면서 수직 가운데 정렬 */
-.about-hero-inner {
-  width: 100%;
-  max-width: 1200px;
+/* 단어가 위로 올라오는 애니메이션 */
+.split-word.is-animated .split-word-inner {
+  animation: wordFadeUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes wordFadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 🔥 “We create culture” 줄에만 그라데이션 + 투명 글자 */
+.split-text--gradient .split-word-inner {
+  background-image: linear-gradient(90deg, #f97316, #8773f9);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ------------------------------------------------------------
+   WHO WE ARE 섹션
+   ------------------------------------------------------------ */
+
+.about-section--who {
+  background: radial-gradient(
+      circle at bottom,
+      rgba(56, 189, 248, 0.14),
+      transparent 55%
+    ),
+    #050608;
+}
+
+.about-section--who .about-section-inner {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
-
-  min-height: calc(100vh - 68px); /* 헤더 빼고 남은 높이 */
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 60px;
-  align-items: center; /* ✅ 수직 가운데 정렬 */
+  padding: 160px 24px;
+  text-align: center;
 }
 
-.about-hero-main {
-  max-width: 640px;
+/* 두 문장을 위아래로 자연스럽게 쌓는 래퍼 */
+.who-lines {
+  display: inline-block; /* 텍스트 블록만 가운데 정렬 */
+  text-align: center;
 }
 
-/* 킥커 주황색 */
-.about-hero-kicker {
-  font-size: 14px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: #f97316;
-  margin-bottom: 12px;
-}
-
-.about-hero-title {
-  font-size: 44px;
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.about-hero-desc {
-  font-size: 17px;
-  color: var(--fg-muted);
+/* 기본 문장 스타일 */
+.who-line {
+  margin: 4px 0;
+  font-size: 28px;
   line-height: 1.7;
+  font-weight: 500;
+  word-break: keep-all;
+  color: #4b5563; /* 기본은 회색 */
+  opacity: 0.4; /* 살짝 연하게 */
+  transition: opacity 0.4s ease, color 0.4s ease;
 }
 
-/* 우측 동그라미 */
-.about-hero-visual {
+/* 강조(활성화)된 문장 */
+.who-line.is-active {
+  opacity: 1;
+  color: #ffffff !important; /* 혹시 다른 색상이 덮어쓰는 걸 대비해서 */
+}
+
+@media (max-width: 768px) {
+  .about-section--who .about-section-inner {
+    padding: 120px 20px;
+  }
+
+  .who-line {
+    font-size: 22px;
+  }
+}
+
+/* 공통 섹션 헤드 ----------------------------------------------- */
+.section-head {
+  max-width: 780px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.section-kicker {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #818cf8;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.section-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #9ca3af;
+}
+
+/* ===========================
+   PHILOSOPHY SECTION – Wellysis 스타일
+   =========================== */
+
+/* 섹션 전체 래퍼 */
+.philo-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Wellysis와 비슷한 퍼플 톤 (명도 낮춤) */
+  background: #4f52a3;
+  color: #ffffff;
+}
+
+/* 안쪽 컨테이너 */
+.philo-inner {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 40px 140px;
+  text-align: center;
+}
+
+/* 섹션 헤더 */
+.philo-label {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.philo-title {
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+
+.philo-desc {
+  max-width: 1440px; /* 더 넓게 */
+  white-space: nowrap; /* 줄바꿈 금지 */
+  overflow: hidden; /* 혹시 넘치면 숨김 */
+  text-overflow: ellipsis; /* 너무 길면 ... 처리(선택사항) */
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* ===========================
+   PHILOSOPHY – 원 + 점선
+   =========================== */
+
+/* 원 3개 + 점선 래퍼 */
+.philo-circles {
+  position: relative;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.about-hero-blob {
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 30% 10%,
-    rgba(249, 115, 22, 0.9),
-    rgba(15, 17, 20, 0.5) 55%,
-    #020617 90%
-  );
-  opacity: 0.9;
-}
-
-/* scroll down은 hero 맨 아래 중앙 */
-.scroll-down--about {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-}
-
-/* 반응형 */
-@media (max-width: 960px) {
-  .about-hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-  }
-
-  .about-hero-visual {
-    display: none;
-  }
-
-  .about-hero-title {
-    font-size: 36px;
-  }
-}
-
-/* ============================================================
-   2. WHO WE ARE
-   ============================================================ */
-
-.about-who {
-  background: #0f1114;
-}
-
-.about-who-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 56px;
-}
-
-.about-who-text p {
-  font-size: 16px;
-  color: var(--fg-muted);
-  line-height: 1.9;
-  margin-bottom: 14px;
-}
-
-.about-who-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.about-tag {
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  color: #e5e7eb;
-  font-size: 13px;
-  background: rgba(15, 23, 42, 0.8);
-}
-
-/* ============================================================
-   3. PHILOSOPHY
-   ============================================================ */
-
-.about-philosophy {
-  background: #050608;
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-}
-
-.about-philosophy-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.philo-grid {
-  margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.philo-card {
-  padding: 18px 14px;
-  border-radius: 16px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-}
-
-.philo-card-title {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #f97316;
-  margin-bottom: 6px;
-}
-
-.philo-card-sub {
-  font-size: 15px;
-  color: #e5e7eb;
-  margin-bottom: 6px;
-}
-
-.philo-card-desc {
-  font-size: 14px;
-  color: var(--fg-muted);
-  line-height: 1.6;
-}
-
-/* ============================================================
-   4. WHAT WE DO
-   ============================================================ */
-
-.about-what {
-  background: #0f1114;
-}
-
-.about-what-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.about-what-graph {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 40px;
-}
-
-.about-what-graph::before,
-.about-what-graph::after {
+/* 세 개 원을 감싸는 긴 타원형 점선 */
+.philo-circles::before {
   content: "";
   position: absolute;
-  background: rgba(148, 163, 184, 0.4);
-}
-
-.about-what-graph::before {
-  /* 가로 */
-  height: 1px;
-  width: 100%;
   top: 50%;
-  left: 0;
-}
-
-.about-what-graph::after {
-  /* 세로 */
-  width: 1px;
-  height: 100%;
   left: 50%;
-  top: 0;
+  transform: translate(-50%, -50%);
+
+  /* Wellysis 느낌에 맞춘 비율 */
+  width: 1250px;
+  height: 480px;
+
+  border-radius: 999px;
+  border: 3px dotted rgba(255, 255, 255, 0.149);
+  pointer-events: none;
 }
 
-.what-card {
-  padding: 20px 18px;
-  border-radius: 16px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.3);
+/* 개별 원 – Wellysis 비율 */
+.philo-circle {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+
+  /* 아주 옅은 투명 흰색 + 블러 */
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px 32px;
+  z-index: 1;
 }
 
-.what-card-label {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.7);
+/* 겹침 정도 – 중앙 기준 살짝씩 겹치게 */
+.philo-circle + .philo-circle {
+  margin-left: -40px;
+}
+
+/* 중앙 원 제일 위로 */
+.philo-circle--structure {
+  z-index: 3;
+}
+
+/* 양 옆 원은 한 단계 아래 */
+.philo-circle--growth,
+.philo-circle--partnership {
+  z-index: 2;
+}
+
+/* 영어 태그를 맨 위로 */
+.philo-circle-tag {
+  order: 1;
   margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
 }
 
-.what-card-title {
-  font-size: 20px;
-  font-weight: 700;
+/* 한글 키워드가 두 번째 */
+.philo-circle-kor {
+  order: 2;
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+/* 설명 텍스트 – 길이 줄여서 시인성 올림 */
+.philo-circle-text {
+  order: 3;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #ffffff;
+  opacity: 0.9;
+  max-width: 90%;
+}
+
+/* 원마다 살짝 다른 그라데이션 느낌 (매우 옅게) */
+.philo-circle--growth {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.11),
+      rgba(255, 255, 255, 0.04)
+    ),
+    rgba(255, 255, 255, 0.04);
+}
+
+.philo-circle--structure {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.05)
+    ),
+    rgba(255, 255, 255, 0.05);
+}
+
+.philo-circle--partnership {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    ),
+    rgba(255, 255, 255, 0.04);
+}
+
+/* ===========================
+   반응형
+   =========================== */
+
+@media (max-width: 1200px) {
+  .philo-inner {
+    padding: 110px 32px 120px;
+  }
+
+  .philo-circles::before {
+    width: 1000px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .philo-inner {
+    padding: 100px 28px 110px;
+  }
+
+  .philo-circle {
+    width: 300px;
+    height: 300px;
+    padding: 28px 26px;
+  }
+
+  .philo-circle + .philo-circle {
+    margin-left: -50px;
+  }
+
+  .philo-circles::before {
+    width: 880px;
+    height: 310px;
+  }
+
+  .philo-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .philo-section {
+    min-height: auto;
+  }
+
+  .philo-inner {
+    padding: 80px 20px 90px;
+  }
+
+  .philo-circles {
+    flex-direction: column;
+  }
+
+  .philo-circles::before {
+    width: 90%;
+    height: 430px;
+  }
+
+  .philo-circle,
+  .philo-circle + .philo-circle {
+    margin-left: 0;
+    width: 260px;
+    height: 260px;
+    margin-bottom: 24px;
+  }
+
+  .philo-circle-text {
+    max-width: 80%;
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   NUMBERS SECTION
+   ========================= */
+
+.numbers-section {
+  position: relative;
+  min-height: 100vh;
+  background: #000000;
+  color: #f9fafb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numbers-inner {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* 상단 텍스트 */
+
+.numbers-left {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 56px;
+  flex-shrink: 0;
+}
+
+.numbers-label {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #818cf8;
   margin-bottom: 8px;
 }
 
-.what-card-desc {
-  font-size: 14px;
-  color: var(--fg-muted);
-  line-height: 1.7;
-}
-
-/* ============================================================
-   5. HISTORY / JOURNEY
-   ============================================================ */
-
-.about-history {
-  background: #050608;
-}
-
-.about-history-inner {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.timeline {
-  margin-top: 36px;
-  padding-left: 26px;
-  border-left: 1px solid rgba(148, 163, 184, 0.45);
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 28px;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -8px;
-  top: 4px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid #f97316;
-  background: #0f172a;
-}
-
-.timeline-year {
-  font-size: 16px;
+.numbers-title {
+  font-size: 50px;
   font-weight: 700;
-  color: #e5e7eb;
-  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
 }
 
-.timeline-desc {
-  font-size: 14px;
-  color: var(--fg-muted);
-  line-height: 1.6;
+.numbers-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(226, 232, 240, 0.9);
+  max-width: 1100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ============================================================
-   6. NUMBERS
-   ============================================================ */
+/* =========================
+   카드 그리드
+   ========================= */
 
-.about-numbers {
-  background: #0b0e11;
-}
-
-.about-numbers-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.stats-grid {
+.numbers-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 32px;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 🔹 항상 4열 */
+  gap: 20px;
 }
 
-.stat-card {
-  padding: 20px 18px;
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(148, 163, 184, 0.4);
+/* 카드 기본 레이아웃 (필요하면 현재 것과 교체) */
+/* =========================
+   NUMBERS – 카드 스타일만 개선
+   ========================= */
+
+.numbers-card {
+  position: relative;
+  overflow: hidden;
+
+  /* 📌 깊이감 있는 네이비 글래스 */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(0, 0, 0, 0.78) 60%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+
+  /* 📌 가장 큰 차이: 경계가 살짝 빛나는 느낌 */
+  border: 1px solid rgba(85, 120, 255, 0.08);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.55),
+    inset 0 0 40px rgba(60, 80, 140, 0.06);
+
+  border-radius: 22px;
+
+  padding: 32px 28px 34px;
+  min-height: 440px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  transition: 0.3s ease;
 }
 
-.stat-number {
-  font-size: 26px;
+/* Hover 시 아주 은은하게 세련되게 */
+.numbers-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.65),
+    inset 0 0 60px rgba(80, 120, 255, 0.1);
+}
+
+/* 좌측 상단 일러스트 아이콘 */
+.numbers-card-illu {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.numbers-card-illu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  /* 아이콘을 흰색으로 변환 */
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* 본문을 카드 아래쪽으로 내리기 */
+.numbers-card-body {
+  margin-top: auto;
+}
+
+/* 헤더 / 숫자 / 설명은 기존 스타일 그대로 사용해도 됨 */
+.numbers-card-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.numbers-card-label {
+  font-size: 20px;
+  color: rgba(203, 213, 225, 0.95);
+  white-space: nowrap;
+}
+
+.numbers-card-main {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.numbers-value {
+  font-size: 44px;
   font-weight: 700;
-  color: #f97316;
-  margin-bottom: 6px;
+  letter-spacing: 0.02em;
 }
 
-.stat-label {
-  font-size: 14px;
-  color: #e5e7eb;
-  margin-bottom: 4px;
+.numbers-unit {
+  font-size: 15px;
+  opacity: 0.85;
 }
 
-.stat-desc {
-  font-size: 13px;
-  color: var(--fg-muted);
-  line-height: 1.5;
+.numbers-card-desc {
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(203, 213, 225, 0.9);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* 카드 상단 아이콘 + 세로 라벨 ------------------------ */
 
-@media (max-width: 1024px) {
-  .philo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.numbers-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 숫자 카드 아이콘: 처음 상태 (숨김 + 살짝 축소 + 아래로) */
+.m4l-numbers-card-icon {
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  filter: brightness(0) invert(1); /* 흰색 아이콘 유지용 */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 스크롤 트리거가 걸렸을 때 추가할 클래스 */
+.m4l-numbers-card-icon.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 카드 바깥 우측 상단 세로 텍스트 */
+
+.numbers-card-tag {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.85);
+  transform: rotate(90deg);
+  transform-origin: top right;
+  position: absolute;
+  top: 26px;
+  right: -32px; /* 카드 밖으로 살짝 빼기 */
+}
+
+/* 하단 일러스트 공통 스타일 */
+
+.numbers-card-illust {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42%;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 1200px) {
+  .numbers-section {
+    padding: 110px 32px 120px;
   }
 
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .numbers-title {
+    font-size: 34px;
   }
 
-  .about-hero-title {
-    font-size: 38px;
+  .numbers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 태블릿: 2x2 카드 */
+    row-gap: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .numbers-section {
+    min-height: auto;
+    padding: 90px 24px 110px;
+  }
+
+  .numbers-title {
+    font-size: 30px;
+  }
+
+  .numbers-desc {
+    max-width: 520px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 }
 
 @media (max-width: 640px) {
-  .philo-grid,
-  .stats-grid,
-  .about-what-graph {
-    grid-template-columns: minmax(0, 1fr);
+  .numbers-grid {
+    grid-template-columns: minmax(0, 1fr); /* 모바일: 1열 */
   }
 
-  .about-hero-inner {
-    grid-template-columns: 1fr;
+  .numbers-card {
+    padding: 20px 18px 22px;
   }
 
-  .about-hero-visual {
-    display: none;
+  .numbers-title {
+    font-size: 26px;
   }
+}
+
+/* 일러스트 아이콘 기본 상태: 살짝 아래 + 축소 + 투명 */
+.numbers-card-illu img {
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* 기존 filter 있으면 그대로 두고, 없으면 필요 시 추가 */
+  /* filter: brightness(0) invert(1); */
+}
+
+/* 스크롤 트리거 후: 자연스럽게 나타남 */
+.numbers-card-illu img.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* HISTORY ------------------------------------------------------- */
+
+.history-section {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  color: #f9fafb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-inner {
+  max-width: 1400px; /* numbers-inner와 동일 */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* 상단 헤더 – 왼쪽 정렬, numbers-left 느낌 */
+.history-section .section-head.history-head {
+  max-width: 1100px;
+  margin: 0 0 56px 0;
+  text-align: left;
+}
+
+.history-head .section-kicker {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #818cf8;
+  margin-bottom: 10px;
+}
+
+.history-head .section-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: #f9fafb;
+  margin-bottom: 14px;
+}
+
+/* 타임라인 래퍼 */
+.history-timeline {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== 타임라인 레이아웃 최종 정리 ===== */
+
+/* 1) 아이템별 선 제거 */
+.history-item::before {
+  content: none;
+}
+
+/* 타임라인 전체 위치 – 헤더 텍스트와 좌측 정렬 */
+.history-list {
+  position: relative;
+  margin: 0;
+  padding: 0px 0 0 0; /* ⬅️ 왼쪽 패딩 0으로, 헤더와 같은 선에서 시작 */
+}
+
+/* 각 연도 블록 – 왼쪽 연도 / 오른쪽 내용 */
+.history-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  column-gap: 100px;
+  padding: 45px 0 30px;
+}
+
+/* 연도 컬럼 (세로선 + 동그라미 + 연도 숫자 들어가는 영역) */
+.history-year-col {
+  position: relative;
+  padding-left: 60px; /* 원 + 선과 연도 숫자 사이 여유 */
+}
+
+/* 세로선: 각 연도 컬럼마다 자기 구간 선을 그림 */
+.history-year-col::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: -100px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(129, 140, 248, 1) 0%,
+    /* 동그라미 근처에서 진하게 시작 */ rgba(129, 140, 248, 0.6) 35%,
+    /* 중간쯤까지는 꽤 선명하게 */ rgba(129, 140, 248, 0.18) 75%,
+    /* 아래로 갈수록 부드럽게 연해지고 */ rgba(15, 23, 42, 0) 100%
+      /* 끝부분에서 자연스럽게 사라짐 */
+  );
+}
+
+/* 맨 위 아이템: 선이 동그라미 위로 튀어나오지 않도록 시작점을 내려줌 */
+.history-item:first-child .history-year-col::before {
+  top: 24px;
+}
+.history-item:last-child .history-year-col::before {
+  bottom: 100px;
+}
+
+/* 동그라미 – 세로선과 같은 x축, 연도 왼쪽에 위치 */
+.history-dot {
+  position: absolute;
+  left: 0; /* ⬅️ 헤더 텍스트와 같은 x축 (세로선과 동일) */
+  top: 16px;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 3px solid #818cf8;
+  background: #020617;
+}
+
+/* 연도 숫자 – 패딩으로 이미 밀려 있으니 margin은 0 */
+.history-year {
+  font-size: 35px;
+  font-weight: 700;
+  color: #f9fafb;
+  margin-left: 0;
+  margin-top: -15px; /* 연도를 위로 4px 올림 */
+}
+
+/* 우측 내용 컬럼은 그대로 */
+.history-body {
+  color: #e5e7eb;
+}
+
+.history-hook {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.history-events {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #9ca3af;
+}
+
+.history-events li + li {
+  margin-top: 2px;
+}
+
+/* 공통 리빌 애니메이션 ------------------------------------------- */
+.js-reveal.is-visible,
+.philosophy-card.is-visible,
+.number-card.is-visible,
+.history-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 반응형 --------------------------------------------------------- */
+@media (max-width: 960px) {
+  .history-inner {
+    padding: 0 24px;
+  }
+
+  .history-list {
+    padding-left: 60px;
+  }
+
+  .history-year-col {
+    padding-left: 20px;
+  }
+
+  .history-list::before,
+  .history-dot {
+    left: 32px;
+  }
+
+  /* 모바일에서는 설명을 여러 줄로 허용 */
+  .history-section .section-desc {
+    white-space: normal;
+    text-overflow: clip;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-head {
+    text-align: left;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .philosophy-section,
+  .numbers-section,
+  .history-section {
+    min-height: 100vh;
+    padding: 80px 24px 100px;
+  }
+}
+
+/* =========================
+   HISTORY 스크롤 페이드인
+   ========================= */
+
+/* 처음 상태: 살짝 아래 + 투명 */
+.history-head,
+.history-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 화면에 들어왔을 때 */
+.history-head.is-visible,
+.history-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
