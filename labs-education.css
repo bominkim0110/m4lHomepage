@@ -1,0 +1,922 @@
+/* =========================
+   labs-education.css (FINAL - WIDTH UNIFIED)
+   - HERO: Marketing 1:1
+   - WHY+Cards: 1 screen (100vh)
+   - Detail 01~04: each 1 screen (100vh) + SAME WIDTH as WHY (.mk-container)
+   - CTA: keep (NOT forced to 100vh)
+   ========================= */
+
+/* ---------- Vars ---------- */
+:root {
+  --mk-max: 1680px;
+  --mk-pad: 24px;
+
+  --ed-accent: #22c55e;
+
+  --ed-text: #0f172a;
+  --ed-muted: #94a3b8;
+
+  --ed-radius: 16px;
+  --ed-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+
+  /* 고정 헤더 높이(대략). 필요하면 110~150 사이에서 조절 */
+  --ed-header-offset: 140px;
+
+  /* 섹션 하단 여백 */
+  --ed-section-bottom: 80px;
+}
+
+/* ---------- Container (Marketing 체감) ---------- */
+.lab-education .mk-container {
+  max-width: var(--mk-max);
+  margin: 0 auto;
+  padding-left: var(--mk-pad);
+  padding-right: var(--mk-pad);
+}
+
+/* =========================================================
+   HERO (Marketing EXACT)
+   ========================================================= */
+.lab-education .mk-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.lab-education .mk-hero .mk-container {
+  max-width: 1320px; /* Marketing hero 폭 */
+}
+
+.lab-education .mk-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lab-education .mk-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+/* ✅ styles.css의 중앙정렬/플렉스가 끼어들면 깨짐 → 강제 오버라이드 */
+.lab-education .mk-hero-inner {
+  position: relative;
+  z-index: 2;
+
+  display: grid !important;
+  place-content: start !important;
+  justify-items: start !important;
+  text-align: left !important;
+
+  padding-top: 220px;
+  padding-bottom: 96px;
+}
+
+.lab-education .mk-hero-title {
+  color: #fff;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+.lab-education .mk-hero-sub {
+  font-size: 20px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 720px;
+  white-space: nowrap;
+  margin-top: 12px;
+  text-align: left !important;
+}
+
+/* Scroll-down: Marketing 동일 + GREEN */
+.lab-education .scroll-down {
+  position: fixed !important;
+  left: 50%;
+  bottom: 48px;
+  transform: translateX(-50%);
+  z-index: 30;
+}
+.lab-education .scroll-down span {
+  border-color: rgba(34, 197, 94, 0.95) !important;
+}
+.lab-education .scroll-down span::after {
+  background: var(--ed-accent) !important;
+}
+
+/* Mobile hero */
+@media (max-width: 720px) {
+  .lab-education .mk-hero-inner {
+    padding-top: 168px;
+    padding-bottom: 84px;
+  }
+  .lab-education .mk-hero-title {
+    font-size: 34px;
+    white-space: normal;
+  }
+  .lab-education .mk-hero-sub {
+    font-size: 16px;
+    white-space: normal;
+  }
+}
+
+/* =========================================================
+   WHY + TRACKS (딱 1화면)
+   ========================================================= */
+.lab-education .ed-body {
+  background: #ffffff;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding-top: var(--ed-header-offset);
+  padding-bottom: 120px;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+/* WHY / INTRO */
+.lab-education .ed-intro {
+  max-width: 920px;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 26px;
+  text-align: left;
+}
+
+.lab-education .ed-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--ed-accent);
+  margin: 0 0 10px;
+}
+
+.lab-education .ed-title {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ed-text);
+  margin: 0 0 14px;
+}
+
+.lab-education .ed-sub {
+  font-size: 16px;
+  line-height: 1.9;
+  color: rgba(15, 23, 42, 0.72);
+  margin: 0;
+}
+
+/* TRACKS 영역 */
+.lab-education .ed-tracks {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 8px;
+}
+
+.lab-education .ed-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 40px;
+  gap: 22px;
+}
+
+/* =========================================================
+   EDUCATION 카드: 레이아웃 유지 + 그라데이션 배경 + 버튼(Startup처럼)
+   ========================================================= */
+
+/* 카드 기본 (중복 선언 정리: 이 블록 하나만 유지) */
+.lab-education .ed-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--ed-shadow);
+  color: #fff;
+
+  min-height: clamp(360px, 42vh, 520px);
+  transform: translateZ(0);
+
+  /* ✅ 사진 배경 사용 끄고, 여기서 배경을 그라데이션으로 통일 */
+  background: var(--ed-grad, linear-gradient(135deg, #111827, #334155));
+  background-size: cover;
+  background-position: center;
+}
+
+/* ✅ 카드 4개 각각 그라데이션 (순서 그대로 1~4) */
+.lab-education .ed-card:nth-child(1) {
+  --ed-grad: linear-gradient(135deg, #064e3b, #0d9488);
+}
+.lab-education .ed-card:nth-child(2) {
+  --ed-grad: linear-gradient(135deg, #111827, #334155);
+}
+.lab-education .ed-card:nth-child(3) {
+  --ed-grad: linear-gradient(135deg, #6b5b00, #eac54f); /* 추천 노랑 */
+}
+.lab-education .ed-card:nth-child(4) {
+  --ed-grad: linear-gradient(135deg, #0f172a, #334155);
+}
+
+/* ✅ 기존에 카드 안에 이미지가 있었다면 숨김(레이아웃은 동일) */
+.lab-education .ed-card img {
+  display: none !important;
+}
+
+/* 오버레이는 유지(가독성/깊이감) */
+.lab-education .ed-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.28) 55%,
+    rgba(0, 0, 0, 0.48) 100%
+  );
+  transition: background 180ms ease;
+}
+
+/* 카드 hover 시 오버레이 살짝 강화 */
+.lab-education .ed-card:hover .ed-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(0, 0, 0, 0.36) 55%,
+    rgba(0, 0, 0, 0.58) 100%
+  );
+}
+
+/* 상단/타이틀/본문 (네 코드 유지) */
+.lab-education .ed-card-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 18px 10px;
+}
+
+.lab-education .ed-card-index {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+}
+
+.lab-education .ed-card-chip {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.lab-education .ed-card-h3 {
+  position: relative;
+  z-index: 2;
+  padding: 10px 18px 0;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.lab-education .ed-card-p {
+  position: relative;
+  z-index: 2;
+  padding: 10px 18px 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 92%;
+}
+
+/* =========================================================
+   더 알아보기 버튼: Startup처럼
+   - 기본 숨김
+   - 카드 hover 시 등장
+   - 가로로 길게(좌우 꽉)
+   ========================================================= */
+.lab-education .ed-more {
+  position: absolute;
+  left: 18px;
+  right: 18px; /* ✅ 풀폭 */
+  bottom: 18px;
+  z-index: 3;
+
+  height: 46px;
+  border-radius: 999px;
+
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.22);
+  color: #fff;
+
+  font-weight: 800;
+  font-size: 14px;
+
+  cursor: pointer;
+  display: flex; /* ✅ 중앙정렬 */
+  align-items: center;
+  justify-content: center;
+
+  /* ✅ 기본 숨김 */
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+
+  transition: opacity 180ms ease, transform 180ms ease, background 180ms ease,
+    border-color 180ms ease;
+}
+
+/* 화살표 span은 그대로 숨김 유지 */
+.lab-education .ed-more span[aria-hidden="true"] {
+  display: none;
+}
+
+/* ✅ 카드 hover 때만 버튼 등장 */
+.lab-education .ed-card:hover .ed-more {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+/* 버튼 hover(버튼 위에서만) 살짝 업 */
+.lab-education .ed-more:hover {
+  transform: translateY(-1px);
+}
+
+/* 모바일/터치에서는 hover가 없으니 항상 보이게 */
+@media (hover: none) {
+  .lab-education .ed-more {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* WHY responsive (네 코드 유지) */
+@media (max-width: 1200px) {
+  .lab-education .ed-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lab-education .ed-tracks {
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  .lab-education .ed-body {
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+  .lab-education .ed-title {
+    font-size: 34px;
+  }
+  .lab-education .ed-cards {
+    grid-template-columns: 1fr;
+  }
+  .lab-education .ed-card {
+    min-height: 380px;
+  }
+}
+
+/* =========================================================
+   DETAILS: HERO/CTA 제외, WHY와 동일 폭(mk-container) 기준
+   - ✅ HTML 수정 없이 동작 (ed-detail-inner 불필요)
+   - ✅ 텍스트 위 / 2박스 아래(다음 줄)
+   - ✅ 전역 중앙정렬/회색 상속 차단
+   ========================================================= */
+.lab-education .ed-details {
+  padding: 0;
+  margin: 0;
+}
+
+/* ✅ 각 detail 섹션 자체가 mk-container 폭을 갖도록 */
+.lab-education .ed-detail {
+  scroll-margin-top: calc(var(--ed-header-offset) - 20px);
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: var(--ed-header-offset);
+  padding-bottom: var(--ed-section-bottom);
+
+  border-top: none;
+  background: #ffffff;
+
+  /* ✅ WHY와 동일 폭 체감 */
+  max-width: var(--mk-max);
+  margin: 0 auto;
+  padding-left: var(--mk-pad);
+  padding-right: var(--mk-pad);
+
+  /* ✅ 레이아웃: 텍스트(위) + 2박스(아래) */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  /* ✅ 텍스트-박스 간격: 너무 벌어지는 문제 방지 */
+  gap: 50px;
+
+  /* ✅ 전역 중앙정렬/색상 상속 차단 */
+  text-align: left;
+  color: var(--ed-text);
+}
+
+/* ✅ (중요) ed-detail-inner는 HTML에 없으니, 있으면만 적용 */
+.lab-education .ed-detail-inner {
+  display: contents;
+}
+
+/* --- 왼쪽 텍스트(상단) --- */
+.lab-education .ed-detail-head {
+  max-width: 920px; /* WHY 타이틀 폭과 동일 느낌 */
+  margin: 0;
+  text-align: left;
+}
+
+.lab-education .ed-badge {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ed-accent);
+  margin: 0 0 10px;
+}
+
+.lab-education .ed-detail-title {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.18;
+  margin: 0 0 14px;
+  color: var(--ed-text);
+  text-align: left;
+}
+
+.lab-education .ed-detail-sub {
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 0;
+  color: rgba(15, 23, 42, 0.72);
+  text-align: left;
+}
+
+/* --- 오른쪽 2박스(아래 줄) --- */
+.lab-education .ed-detail-grid {
+  width: 100%;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+
+  /* ✅ 우측정렬/밀림 원인 제거 */
+  max-width: none;
+  margin-left: 0;
+}
+
+/* 박스 */
+.lab-education .ed-detail-box {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 22px 30px 18px;
+}
+
+.lab-education .ed-h4 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--ed-text);
+}
+
+.lab-education .ed-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(15, 23, 42, 0.78);
+  line-height: 1.85;
+  font-size: 14px;
+}
+.lab-education .ed-list li {
+  margin: 6px 0;
+}
+
+/* Detail responsive */
+@media (max-width: 1100px) {
+  .lab-education .ed-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   CTA (Marketing과 동일)  ✅ 기존 그대로
+   ========================================================= */
+.lab-education .lab-cta {
+  background: #000;
+  color: #fff;
+  width: 100%;
+}
+
+.lab-education .lab-cta-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  text-align: center;
+}
+
+.lab-education .lab-cta-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.lab-education .lab-cta-desc {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0 0 30px;
+}
+
+.lab-education .lab-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}
+
+.lab-education .lab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+  padding: 0 34px;
+
+  border-radius: 999px;
+  border: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  text-decoration: none !important;
+  white-space: nowrap;
+
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.lab-education .lab-cta-actions .lab-btn {
+  height: 48px;
+  padding: 0 30px;
+}
+
+.lab-education .lab-cta-actions .lab-btn-glass-pro {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+
+  height: 52px;
+  padding: 0 34px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(245, 247, 255, 0.9)
+  );
+  color: #0b0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transform: translateZ(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+
+  animation: edBreathe 4.5s ease-in-out infinite;
+}
+
+.lab-education .lab-cta-actions .lab-btn-glass-pro::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: -45%;
+  height: 95%;
+  border-radius: 999px;
+  background: radial-gradient(
+    closest-side at 50% 60%,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.25) 55%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.lab-education .lab-cta-actions .lab-btn-glass-pro::after {
+  content: "";
+  position: absolute;
+  inset: -60% -70%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  transform: translateX(-55%) rotate(10deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lab-education .lab-cta-actions .lab-btn-glass-pro:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.06);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.55), 0 0 26px rgba(34, 197, 94, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.lab-education .lab-cta-actions .lab-btn-glass-pro:hover::after {
+  opacity: 0.55;
+  animation: edGlassSheenOnce 1.05s ease-out;
+}
+
+@keyframes edGlassSheenOnce {
+  0% {
+    transform: translateX(-60%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(40%) rotate(10deg);
+  }
+}
+
+@keyframes edBreathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================================
+   ✅ 중요: 아래 "DETAIL HARD RESET"은 이제 필요 없음
+   (기존 레이아웃과 충돌해서 화면을 망가뜨림)
+   → 삭제하거나, 최소한 비활성화
+   ========================================================= */
+/* (삭제 권장) */
+
+/* =========================================================
+   FIX: Education 페이지 좌우 검정 배경 제거
+   ========================================================= */
+
+/* 페이지 최상위 배경 강제 흰색 */
+.lab-page.lab-education {
+  background: #ffffff !important;
+}
+
+/* 혹시 한 단계 더 감싸는 래퍼가 있을 경우 대비 */
+.lab-page.lab-education body,
+.lab-page.lab-education .page-wrapper,
+.lab-page.lab-education .site-wrap,
+.lab-page.lab-education .main-wrap {
+  background: #ffffff !important;
+}
+
+/* =========================================================
+   EDUCATION 상세 페이지 내부: 문제→해법 아코디언
+   - Startup 운영파트너십과 동일한 인터랙션
+   - Accent: Green
+   ========================================================= */
+:root {
+  --ed-green: #16a34a; /* ✅ 초록 accent */
+  --ed-ink: #0f172a;
+  --ed-line: rgba(15, 23, 42, 0.1);
+  --ed-muted: rgba(15, 23, 42, 0.62);
+  --ed-shadow-soft: 0 12px 34px rgba(15, 23, 42, 0.06);
+}
+
+.lab-education .ed-sol-acc {
+  display: grid;
+  gap: 14px;
+}
+
+/* 아이템 카드 */
+.lab-education .ed-sol-item {
+  border: 1px solid var(--ed-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--ed-shadow-soft);
+  overflow: hidden;
+}
+
+/* 상단 버튼(문제 문장) */
+.lab-education .ed-sol-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 56px 1fr 28px;
+  gap: 14px;
+  align-items: center;
+
+  padding: 18px 18px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* 번호 */
+.lab-education .ed-sol-idx {
+  font-weight: 900;
+  color: var(--ed-green);
+  font-size: 14px;
+  width: 56px;
+  text-align: center;
+}
+
+/* 문제 문장 */
+.lab-education .ed-sol-title {
+  font-weight: 900;
+  color: var(--ed-ink);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* 체브론 */
+.lab-education .ed-sol-chevron {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(15, 23, 42, 0.7);
+  border-bottom: 2px solid rgba(15, 23, 42, 0.7);
+  transform: rotate(45deg);
+  transition: transform 0.18s ease;
+  justify-self: end;
+}
+
+/* 펼쳐지는 body */
+.lab-education .ed-sol-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.22s ease;
+}
+
+.lab-education .ed-sol-inner {
+  padding: 0 18px 18px 88px; /* idx 만큼 들여쓰기 */
+}
+
+/* '추천 교육' 초록 네모 박스 */
+.lab-education .ed-sol-badge {
+  display: inline-block;
+
+  padding: 6px 10px;
+  margin-bottom: 10px;
+
+  background: #16a34a; /* 초록 */
+  color: #ffffff; /* 흰색 글씨 */
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+
+  border-radius: 6px; /* 네모 느낌 유지 */
+}
+
+/* 헤드라인 */
+.lab-education .ed-sol-h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ed-ink);
+}
+
+/* 리스트 */
+.lab-education .ed-sol-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(15, 23, 42, 0.78);
+  line-height: 1.8;
+  font-size: 14px;
+}
+.lab-education .ed-sol-list li {
+  margin: 6px 0;
+}
+
+/* ===== 간격 정리 핵심 ===== */
+
+/* 상단 문제 문장 버튼 */
+.lab-education .ed-sol-top {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* 펼쳐지는 영역 전체 */
+.lab-education .ed-sol-body {
+  background: #f8fafc;
+}
+
+/* 펼쳐지는 내부 콘텐츠 간격 */
+.lab-education .ed-sol-inner {
+  padding: 18px 20px 20px; /* 위 여백 줄이고 좌우 정렬 */
+}
+
+/* '추천 교육' 배지 위치 안정화 */
+.lab-education .ed-sol-badge {
+  margin: 0 0 10px 0; /* 위 간격 제거 */
+}
+
+/* 교육명(h4) 위 간격 정리 */
+.lab-education .ed-sol-h4 {
+  margin-top: 0;
+}
+
+/* 리스트 첫 줄이 너무 붙어보이지 않게 */
+.lab-education .ed-sol-list {
+  margin-top: 6px;
+}
+
+/* ===== 펼쳐진 추천 교육 영역 여백 복원 ===== */
+
+/* 펼쳐진 내부 전체 여백 */
+.lab-education .ed-sol-inner {
+  padding: 22px 100px 26px; /* ← 좌우 여백 핵심 */
+}
+
+/* 추천 교육 배지 */
+.lab-education .ed-sol-badge {
+  margin-bottom: 10px; /* 배지와 교육명 사이 */
+}
+
+/* 교육명 */
+.lab-education .ed-sol-h4 {
+  margin-bottom: 12px;
+}
+
+/* 리스트 전체 */
+.lab-education .ed-sol-list {
+  margin-top: 0;
+}
+
+/* 리스트 항목 */
+.lab-education .ed-sol-list li {
+  margin: 6px 0;
+  line-height: 1.7;
+}
+
+/* ✅ Startup 느낌: hover/focus/open 시 border 강조 + body 펼침 */
+.lab-education .ed-sol-item:hover,
+.lab-education .ed-sol-item:focus-within,
+.lab-education .ed-sol-item.is-open {
+  border-color: rgba(22, 163, 74, 0.55);
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+}
+
+/* 펼침 */
+.lab-education .ed-sol-item:hover .ed-sol-body,
+.lab-education .ed-sol-item:focus-within .ed-sol-body,
+.lab-education .ed-sol-item.is-open .ed-sol-body {
+  max-height: 520px; /* 내용 길면 늘려도 됨 */
+}
+
+/* 체브론 회전 */
+.lab-education .ed-sol-item:hover .ed-sol-chevron,
+.lab-education .ed-sol-item:focus-within .ed-sol-chevron,
+.lab-education .ed-sol-item.is-open .ed-sol-chevron {
+  transform: rotate(225deg);
+}
+
+/* 모바일 */
+@media (max-width: 900px) {
+  .lab-education .ed-sol-top {
+    grid-template-columns: 44px 1fr 24px;
+  }
+  .lab-education .ed-sol-idx {
+    width: 44px;
+  }
+  .lab-education .ed-sol-inner {
+    padding-left: 18px;
+  }
+}
+
+.lab-education .ed-sol-body {
+  background: #f8fafc;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}

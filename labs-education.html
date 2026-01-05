@@ -1,20 +1,568 @@
-<header class="site-header">
-  <div class="header-inner">
-    <!-- LOGO -->
-    <a href="/" class="logo">
-      <img src="assets/logo-h.png" alt="Medi4Lab Logo" />
-    </a>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EDUCATION LAB | MEDI4LAB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- NAV -->
-    <nav class="nav">
-      <ul>
-        <li><a href="/about.html">About Us</a></li>
-        <li><a href="#labs">4Labs</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <!-- 공통 CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Education 전용 CSS -->
+    <link rel="stylesheet" href="labs-education.css" />
+  </head>
+
+  <body class="lab-page lab-education">
+    <!-- ===== 글로벌 내비게이션 ===== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <img src="assets/logo-h.png" alt="MEDI4LAB" />
+        </a>
+
+        <nav class="nav">
+          <ul>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/#labs">4Labs</a></li>
+            <li><a href="/process.html">Process</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/news.html">News</a></li>
+            <li><a href="/index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================
+           HERO (Marketing과 100% 동일 구조)
+           ========================= -->
+      <section class="mk-hero hero-video-bg">
+        <video
+          class="mk-hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/education/poster/education-hero-poster.jpg"
+        >
+          <source src="assets/ELINK/ELINK.mp4" type="video/mp4" />
+        </video>
+
+        <div class="mk-hero-overlay"></div>
+
+        <div class="mk-container mk-hero-inner">
+          <h1 class="mk-hero-title">
+            교육이 멈춘 병원은 결국 같은 문제를 반복합니다.
+          </h1>
+          <p class="mk-hero-sub">
+            직원의 성장이 병원의 성과와 매출로 이어지도록, 각 직군의 역량을
+            교육으로 설계합니다.
+          </p>
+
+          <div class="scroll-down"><span></span></div>
+        </div>
+      </section>
+
+      <!-- BODY -->
+      <section class="ed-body">
+        <div class="mk-container">
+          <!-- WHY / INTRO -->
+          <header class="ed-intro">
+            <p class="ed-eyebrow">WHY EDUCATION LAB</p>
+            <h2 class="ed-title">
+              교육은 ‘좋은 병원’을 만드는 가장 빠른 방법입니다.
+            </h2>
+            <p class="ed-sub">
+              원장 한 명의 역량만으로는 병원이 성장할 수 없습니다. 직군별 업무가
+              표준화되고, 현장 역량이 쌓일 때 환자 경험과 매출이 함께
+              올라갑니다.
+            </p>
+          </header>
+
+          <!-- TRACK CARDS -->
+          <section class="ed-tracks" aria-label="Education tracks">
+            <div class="ed-cards">
+              <!-- 01 -->
+
+              <article
+                class="ed-card"
+                style="--bg: url('assets/ELINK/image/1.jpg')"
+              >
+                <div class="ed-card-overlay"></div>
+                <div class="ed-card-top">
+                  <span class="ed-card-index">01</span>
+                  <span class="ed-card-chip">COMMUNICATION</span>
+                </div>
+
+                <h3 class="ed-card-h3">실무 표준화 교육</h3>
+                <p class="ed-card-p">
+                  친절을 ‘감각’이 아닌 ‘기준’으로. 어떤 상황에서도 흔들리지 않는
+                  응대/업무 흐름을 만듭니다.
+                </p>
+
+                <button
+                  class="ed-more"
+                  type="button"
+                  data-scroll="#ed-detail-01"
+                >
+                  더 알아보기 <span aria-hidden="true">→</span>
+                </button>
+              </article>
+
+              <!-- 02 -->
+              <article
+                class="ed-card"
+                style="--bg: url('assets/ELINK/image/2.jpg')"
+              >
+                <div class="ed-card-overlay"></div>
+                <div class="ed-card-top">
+                  <span class="ed-card-index">02</span>
+                  <span class="ed-card-chip">ADMIN</span>
+                </div>
+
+                <h3 class="ed-card-h3">행정 관리자 교육</h3>
+                <p class="ed-card-p">
+                  청구·운영·인사·세무/노무까지. 병원의 ‘허리’가 되는 관리자를
+                  실무형으로 육성합니다.
+                </p>
+
+                <button
+                  class="ed-more"
+                  type="button"
+                  data-scroll="#ed-detail-02"
+                >
+                  더 알아보기 <span aria-hidden="true">→</span>
+                </button>
+              </article>
+
+              <!-- 03 -->
+              <article
+                class="ed-card"
+                style="--bg: url('assets/ELINK/image/3.jpg')"
+              >
+                <div class="ed-card-overlay"></div>
+                <div class="ed-card-top">
+                  <span class="ed-card-index">03</span>
+                  <span class="ed-card-chip">PHYSIO</span>
+                </div>
+
+                <h3 class="ed-card-h3">전문 치료사 교육</h3>
+                <p class="ed-card-p">
+                  역할을 나누고 수준을 올립니다. 치료 결과와 수익 구조까지
+                  연결되는 임상 교육을 설계합니다.
+                </p>
+
+                <button
+                  class="ed-more"
+                  type="button"
+                  data-scroll="#ed-detail-03"
+                >
+                  더 알아보기 <span aria-hidden="true">→</span>
+                </button>
+              </article>
+
+              <!-- 04 -->
+              <article
+                class="ed-card"
+                style="--bg: url('assets/ELINK/image/4.jpg')"
+              >
+                <div class="ed-card-overlay"></div>
+                <div class="ed-card-top">
+                  <span class="ed-card-index">04</span>
+                  <span class="ed-card-chip">CUSTOM</span>
+                </div>
+
+                <h3 class="ed-card-h3">직군별 맞춤 교육</h3>
+                <p class="ed-card-p">
+                  병원 상황에 맞춰 커리큘럼을 편성합니다. 직군별 문제를 정확히
+                  짚고 실행까지 연결합니다.
+                </p>
+
+                <button
+                  class="ed-more"
+                  type="button"
+                  data-scroll="#ed-detail-04"
+                >
+                  더 알아보기 <span aria-hidden="true">→</span>
+                </button>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           DETAIL SECTIONS (HERO/CTA 제외, WHY와 동일 폭 기준)
+           ===================================================== -->
+      <section class="ed-details" aria-label="Track details">
+        <!-- 01 -->
+        <article id="ed-detail-01" class="ed-detail">
+          <div class="mk-container ed-detail-inner">
+            <header class="ed-detail-head">
+              <p class="ed-badge">01 · 실무 표준화</p>
+              <h3 class="ed-detail-title">
+                서비스는 사람의 기분이 아니라 시스템으로 유지됩니다.
+              </h3>
+              <p class="ed-detail-sub">
+                응대/업무 흐름을 기준화해, 누가 하더라도 동일한 품질이 나오도록
+                설계합니다.
+              </p>
+            </header>
+
+            <!-- ✅ 01: 문제→추천 교육 (Startup 동일 효과) -->
+            <div class="ed-sol-acc" data-ed-sol-acc>
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="true">
+                  <span class="ed-sol-idx">01</span>
+                  <span class="ed-sol-title"
+                    >직원의 응대가 제각각이라 업무가 표준화되지 않는다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">실무 표준화 및 매뉴얼 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>상황별 응대 스크립트(문의/예약/결제/클레임)</li>
+                      <li>SOP(표준업무) 흐름/체크리스트 설계</li>
+                      <li>CS 체크 포인트 & 현장 피드백 루프</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">02</span>
+                  <span class="ed-sol-title"
+                    >신규 직원 입사 시 매뉴얼이 없어 온보딩이 흔들리고 퇴사가
+                    잦다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">신규 입사자 온보딩 매뉴얼 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>업무별 퀵가이드/역할 정의</li>
+                      <li>첫 2주 온보딩 루틴(업무→피드백→정착)</li>
+                      <li>실수/누락 방지 체크리스트 제공</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">03</span>
+                  <span class="ed-sol-title"
+                    >업무 누락/중복이 반복돼 현장이 늘 바쁘고 고객 불만이
+                    누적된다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      업무 프로세스 표준화 & 현장 점검 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>동선/업무 분장 표준화(누락 포인트 제거)</li>
+                      <li>업무 단계별 체크포인트 설계</li>
+                      <li>재작업/대기시간 줄이는 운영 룰 적용</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article id="ed-detail-02" class="ed-detail">
+          <div class="mk-container ed-detail-inner">
+            <header class="ed-detail-head">
+              <p class="ed-badge">02 · 행정 관리자 교육</p>
+              <h3 class="ed-detail-title">
+                운영이 정리되면, 원장은 진료에 집중할 수 있습니다.
+              </h3>
+              <p class="ed-detail-sub">
+                청구부터 인사/노무/세무 연결까지, 관리자의 실무 역량을
+                구조화합니다.
+              </p>
+            </header>
+
+            <!-- ✅ 02: 문제→추천 교육 -->
+            <div class="ed-sol-acc" data-ed-sol-acc>
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="true">
+                  <span class="ed-sol-idx">01</span>
+                  <span class="ed-sol-title"
+                    >청구/삭감 이슈가 반복되는데 원인을 정확히 모른다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">청구/수가/삭감 리스크 관리 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>삭감 유형별 원인 분석 & 예방 체크리스트</li>
+                      <li>청구 프로세스 표준화(누락/오류 최소화)</li>
+                      <li>사례 기반 리포트/피드백 루프 설계</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">02</span>
+                  <span class="ed-sol-title"
+                    >운영이 특정 직원에게만 의존해서, 그 사람이 없으면 병원이
+                    흔들린다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      관리자 업무 분장 & 운영 프레임 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>관리자 역할/권한/보고 체계 정리</li>
+                      <li>주간/월간 운영 루틴(회의·리포트) 구축</li>
+                      <li>이슈 대응 표준 프로토콜(민원/리스크)</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">03</span>
+                  <span class="ed-sol-title"
+                    >매출·환자흐름 같은 운영 수치가 정리되지 않아 개선이
+                    어렵다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      운영 지표 정리 & 대시보드 운영 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>핵심 지표(매출/흐름/리뷰/재방문) 정의</li>
+                      <li>지표 기반 문제 진단 프레임 적용</li>
+                      <li>월간 개선 액션(우선순위/담당/기한) 설계</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article id="ed-detail-03" class="ed-detail">
+          <div class="mk-container ed-detail-inner">
+            <header class="ed-detail-head">
+              <p class="ed-badge">03 · 전문치료사 교육</p>
+              <h3 class="ed-detail-title">
+                치료의 품질이 곧 병원의 신뢰와 매출이 됩니다.
+              </h3>
+              <p class="ed-detail-sub">
+                역할을 나누고, 단계별 교육으로 임상 결과를 끌어올립니다.
+              </p>
+            </header>
+
+            <!-- ✅ 03: 문제→추천 교육 -->
+            <div class="ed-sol-acc" data-ed-sol-acc>
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="true">
+                  <span class="ed-sol-idx">01</span>
+                  <span class="ed-sol-title"
+                    >치료사마다 평가·치료·설명 방식이 달라 결과와 만족도 편차가
+                    크다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">레벨별 임상 루틴 표준화 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>평가→치료→설명→기록 루틴 정렬</li>
+                      <li>레벨별(초/중/고) 역할과 기대치 설계</li>
+                      <li>케이스 리뷰/피드백 운영 방식 구축</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">02</span>
+                  <span class="ed-sol-title"
+                    >도수·재활은 하는데 상담/재방문/패키지로 연결이 잘 안
+                    된다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">상담·전환 흐름 설계 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>환자 신뢰를 만드는 설명 구조(근거/목표/계획)</li>
+                      <li>상담 포인트 & 제안 흐름(패키지/재방문)</li>
+                      <li>거절/이탈 대응 스크립트 & 기록 방식</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">03</span>
+                  <span class="ed-sol-title"
+                    >기계치료 세팅/적응증이 제각각이라 안전·효율 문제가
+                    생긴다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      기계치료 프로토콜 & 안전 가이드 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>적응증/금기/세팅 표준 프로토콜</li>
+                      <li>환자 커뮤니케이션(주의사항/통증 대응)</li>
+                      <li>사고 예방 체크리스트 & 기록 템플릿</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article id="ed-detail-04" class="ed-detail">
+          <div class="mk-container ed-detail-inner">
+            <header class="ed-detail-head">
+              <p class="ed-badge">04 · 직군별 맞춤 교육</p>
+              <h3 class="ed-detail-title">
+                병원마다 문제는 다르고, 교육도 달라야 합니다.
+              </h3>
+              <p class="ed-detail-sub">
+                직군·업무·환자 흐름을 기준으로 커리큘럼을 편성해 실행까지
+                연결합니다.
+              </p>
+            </header>
+
+            <!-- ✅ 04: 문제→추천 교육 -->
+            <div class="ed-sol-acc" data-ed-sol-acc>
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="true">
+                  <span class="ed-sol-idx">01</span>
+                  <span class="ed-sol-title"
+                    >직군 간 인계/오더 전달 오류로 현장 문제가 반복된다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      팀 커뮤니케이션 룰 & 인계 프로토콜 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>인계·콜·오더 표준 문장/형식 정리</li>
+                      <li>팀 간 커뮤니케이션 룰(누가/언제/어떻게)</li>
+                      <li>오류 방지 체크리스트 & 상황별 시나리오</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">02</span>
+                  <span class="ed-sol-title"
+                    >설명이 미흡해 불만이 누적되고 컴플레인으로 번진다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">직군별 환자 설명·안내 표준화 교육</h4>
+                    <ul class="ed-sol-list">
+                      <li>불만 포인트(대기/비용/치료 과정) 설명 구조</li>
+                      <li>상황별 안내 스크립트(예약/수납/주의사항)</li>
+                      <li>CS 대응 기준(사과/설명/대안) 정리</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="ed-sol-item">
+                <button type="button" class="ed-sol-top" aria-expanded="false">
+                  <span class="ed-sol-idx">03</span>
+                  <span class="ed-sol-title"
+                    >특정 직군에만 업무가 몰려 과부하·이직 리스크가
+                    커진다.</span
+                  >
+                  <span class="ed-sol-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="ed-sol-body" role="region">
+                  <div class="ed-sol-inner">
+                    <p class="ed-sol-badge">추천 교육</p>
+                    <h4 class="ed-sol-h4">
+                      업무 재배치 기반 직군별 SOP 맞춤 교육
+                    </h4>
+                    <ul class="ed-sol-list">
+                      <li>직군별 역할 재정의 & 업무 분장 최적화</li>
+                      <li>과부하 원인(병목) 제거 시나리오 설계</li>
+                      <li>현장 문제 기반 트레이닝(케이스 실습)</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- CTA (Startup/Marketing과 동일 구조로) -->
+      <section class="lab-cta">
+        <div class="lab-cta-inner">
+          <h2 class="lab-cta-title">
+            교육을 시키는 병원과<br />성장하는 병원은 다릅니다.
+          </h2>
+          <p class="lab-cta-desc">
+            병원의 직군별 성장을 설계하는 교육 프로그램을 만나보세요.
+          </p>
+
+          <div class="lab-cta-actions">
+            <a href="/index.html#contact" class="lab-btn lab-btn-glass-pro">
+              교육 상담 신청
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ JS 로드 (파일로 쓰는 경우) -->
+      <script src="labs-education.js"></script>
+    </main>
+  </body>
+</html>
