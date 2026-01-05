@@ -313,3 +313,81 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(item);
   });
 })();
+
+(function () {
+  const sliders = document.querySelectorAll(
+    '.lab-marketing .mk-slider[data-step="true"]'
+  );
+
+  sliders.forEach((slider) => {
+    const viewport = slider.querySelector(".mk-ticker-viewport");
+    const track = slider.querySelector(".mk-ticker-track");
+    if (!viewport || !track) return;
+
+    const items = Array.from(track.children).filter((el) =>
+      el.classList.contains("mk-ticker-item")
+    );
+    if (items.length <= 1) return;
+
+    // ms는 data-step-ms로 조절 (기본 240ms = 아주 빠른 느낌)
+    const stepMs = parseInt(slider.getAttribute("data-step-ms") || "240", 10);
+
+    // ✅ video autoplay 안정화
+    slider.querySelectorAll("video").forEach((v) => {
+      v.muted = true;
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+      v.playsInline = true;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    });
+
+    let idx = 0;
+
+    const step = () => {
+      // 카드 하나 폭(실제 px) + gap을 계산해서 정확히 "한 칸" 이동
+      const first = items[0];
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+      const w = first.getBoundingClientRect().width;
+      const x = (w + gap) * idx;
+
+      track.style.transform = `translate3d(${-x}px, 0, 0)`;
+
+      idx += 1;
+      if (idx >= items.length) {
+        // 끝까지 가면 "즉시" 처음으로 돌아가서 다시 샥샥
+        // (끊김이 싫으면 여기만 '부드럽게'도 가능하지만 PD님은 샥샥 원함)
+        idx = 0;
+        // 1프레임 뒤에 transition 없이 리셋 → 다시 transition 적용
+        requestAnimationFrame(() => {
+          track.style.transition = "none";
+          track.style.transform = "translate3d(0,0,0)";
+          track.getBoundingClientRect(); // reflow
+          track.style.transition = "transform 160ms steps(1, end)";
+        });
+      }
+    };
+
+    // 시작
+    step();
+    const timer = setInterval(step, stepMs);
+
+    // 페이지 이탈 시 정리(안전)
+    slider._mkStepTimer = timer;
+  });
+
+  // iOS: 첫 터치 때 play 재시도
+  window.addEventListener(
+    "touchstart",
+    () => {
+      document
+        .querySelectorAll(".lab-marketing .mk-step video")
+        .forEach((v) => {
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        });
+    },
+    { once: true, passive: true }
+  );
+})();

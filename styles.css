@@ -77,7 +77,8 @@ p {
 }
 
 /* ==============================
-   HEADER
+   HEADER (GLOBAL / ALL PAGES)
+   - Edge aligned + Startup style
    ============================== */
 .site-header {
   position: fixed;
@@ -85,34 +86,53 @@ p {
   left: 0;
   right: 0;
   height: 68px;
+  z-index: 999;
+
   display: flex;
   align-items: center;
-  z-index: 50;
-  backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.2);
+
+  /* STARTUP 느낌 */
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.7),
+    rgba(15, 23, 42, 0.35),
+    rgba(15, 23, 42, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: none;
 }
 
+/* ✅ 끝단 정렬 핵심: max-width 제거 */
 .header-inner {
   width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: none; /* 🔥 이게 포인트 */
+  margin: 0; /* 🔥 가운데 정렬 해제 */
+  padding: 0 40px; /* 끝단이지만 ‘안전 여백’ */
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .logo img {
   height: 28px;
+  width: auto;
   display: block;
-  /* 검정 로고를 흰색처럼 보이게 */
+
+  /* 메인에서 검정 로고를 흰색처럼 쓰는 옵션:
+     이미 흰색 로고(logo-h.png)면 아래 filter 제거해도 됨 */
   filter: brightness(0) invert(1);
 }
 
 .nav ul {
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 20px; /* Startup처럼 촘촘하게 */
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav ul li a {
@@ -121,11 +141,23 @@ p {
   font-weight: 500;
   letter-spacing: -0.3px;
   text-decoration: none;
-  transition: opacity 0.25s;
+  opacity: 0.95;
+  transition: opacity 0.25s, color 0.25s;
 }
 
 .nav ul li a:hover {
-  opacity: 0.45;
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 0 18px;
+  }
+  .nav ul {
+    gap: 14px;
+  }
 }
 
 /* ==============================

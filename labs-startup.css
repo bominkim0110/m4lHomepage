@@ -1,0 +1,1180 @@
+:root {
+  --lab-bg: #ffffff;
+  --lab-text: #0f172a;
+  --lab-muted: #6b7280;
+  --lab-border: #e5e7eb;
+  --lab-soft-bg: #f9fafb;
+  --lab-orange: #ff7a1a;
+  --lab-radius-lg: 24px;
+  --lab-radius-md: 18px;
+  --lab-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+  --lab-max-width: 1320px;
+}
+
+/* =========================================
+   Base layout
+   ========================================= */
+.lab-page {
+  background: #ffffff;
+  color: var(--lab-text);
+}
+
+.lab-startup {
+  padding-top: 0;
+}
+
+.lab-inner {
+  max-width: var(--lab-max-width);
+  margin: 0 auto;
+  padding: 120px 24px 120px;
+}
+
+.lab-section {
+  margin-bottom: 120px;
+  scroll-margin-top: 120px;
+}
+
+.lab-section-head {
+  margin-bottom: 40px;
+}
+
+.lab-section-kicker {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lab-orange);
+  margin-bottom: 10px;
+}
+
+.lab-section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.lab-section-desc {
+  font-size: 16px;
+  color: var(--lab-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+.lab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 34px;
+  height: 50px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.lab-btn-primary {
+  background: var(--lab-orange);
+  color: #fff;
+}
+
+.lab-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 10px rgba(255, 122, 26, 0.5);
+}
+
+.lab-btn-outline {
+  background: transparent;
+  color: var(--lab-text);
+  border: 1px solid var(--lab-border);
+}
+
+.lab-btn-outline:hover {
+  background: var(--lab-soft-bg);
+}
+
+.lab-btn-link {
+  font-size: 15px;
+  color: var(--lab-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.lab-btn-link:hover {
+  color: var(--lab-text);
+}
+
+/* =========================================
+   HERO (video background)
+   ========================================= */
+.lab-hero {
+  border-bottom: 1px solid var(--lab-border);
+}
+
+.lab-hero-inner {
+  max-width: var(--lab-max-width);
+  margin: 0 auto;
+  padding: 200px 24px 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+  column-gap: 72px;
+  align-items: center;
+}
+
+.lab-hero-kicker {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lab-orange);
+  margin-bottom: 12px;
+}
+
+.lab-hero-title {
+  font-size: 44px;
+  font-weight: 800;
+  margin: 0 0 20px;
+  white-space: nowrap;
+}
+
+.lab-hero-lead {
+  font-size: 17px;
+  color: var(--lab-muted);
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.lab-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.lab-startup .hero-video-bg {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: none;
+}
+
+.lab-startup .hero-video-bg .lab-hero-inner {
+  padding: 220px 24px 96px;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-content .lab-hero-kicker,
+.hero-content .lab-hero-title,
+.hero-content .lab-hero-lead {
+  color: #ffffff;
+  word-break: keep-all;
+}
+
+.hero-content .lab-hero-lead {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.9;
+  max-width: 720px;
+  font-size: 20px;
+  display: block;
+  text-align: left;
+  margin-top: 12px;
+  white-space: nowrap;
+}
+
+/* =========================
+   PATCH: Scroll-down bottom + orange (Startup only)
+   - "제일 아래" 느낌: HERO 기준 absolute + 더 아래로
+   ========================= */
+.lab-startup .lab-hero {
+  position: relative; /* scroll-down absolute 기준점 */
+}
+
+/* 이전에 숨겼던 로직이 있어도 무조건 보이게 */
+.lab-startup .scroll-down {
+  position: fixed !important; /* 🔥 핵심 */
+  left: 50%;
+  bottom: 48px; /* 원하는 만큼 */
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+/* 스크롤 버튼(원/선) 컬러를 주황으로 */
+.lab-startup .scroll-down span {
+  border-color: rgba(255, 122, 26, 0.9) !important;
+}
+.lab-startup .scroll-down span::after {
+  background: #ff7a1a !important;
+}
+
+/* =========================================
+   SOLUTIONS (dark section)
+   ========================================= */
+.lab-tracks {
+  width: 100%;
+  background: #020617;
+}
+
+.lab-tracks-inner {
+  max-width: var(--lab-max-width);
+  margin: 0 auto;
+  padding: 80px 24px 96px;
+}
+
+.lab-tracks .lab-section-title {
+  color: #f9fafb;
+}
+
+.lab-tracks .lab-section-desc {
+  color: #9ca3af;
+}
+
+.lab-tracks .lab-section-kicker {
+  color: var(--lab-orange);
+}
+
+.lab-tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 70px;
+}
+
+.lab-track-card {
+  background: #ffffff;
+  border-radius: var(--lab-radius-lg);
+  padding: 40px;
+  border: 1px solid var(--lab-border);
+  box-shadow: var(--lab-shadow-soft);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 680px;
+}
+
+.lab-track-head {
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.lab-track-tag {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lab-orange);
+  margin-bottom: 14px;
+}
+
+.lab-track-title {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.lab-track-sub {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.lab-track-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 32px 0;
+}
+
+.lab-track-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  color: #111827;
+  line-height: 2.1;
+}
+
+.lab-track-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.lab-track-list li + li {
+  margin-top: 8px;
+}
+
+.lab-track-list li::before {
+  content: "✔";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--lab-orange);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.lab-track-cta {
+  margin-top: auto;
+  align-self: center;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 500px;
+  height: 58px;
+
+  border-radius: 10px;
+  background: #313339;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.lab-track-cta:hover {
+  background: #020617;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(15, 23, 42, 0.45);
+}
+
+/* =========================================
+   STEP cards
+   ========================================= */
+.lab-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.lab-step-card {
+  position: relative; /* ::before 스트립을 위해 필요 */
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px 32px 28px;
+  background: #f9fafb;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  min-height: 220px;
+}
+
+.lab-step-card.is-highlight {
+  border-color: var(--lab-orange) !important; /* ✅ 주황 테두리 확실히 */
+  box-shadow: 0 2px 10px rgba(255, 122, 26, 0.18);
+}
+
+.lab-step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 8px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.lab-step-tag {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f97316;
+  margin-bottom: 2px;
+}
+
+.lab-step-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.lab-step-list {
+  margin: 30px 0 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.lab-step-list li + li {
+  margin-top: 10px;
+}
+
+/* =========================================
+   Accordion (final, cleaned)
+   ========================================= */
+.lab-startup .lab-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lab-startup .lab-accordion-item {
+  border: 1px solid #e6e8ee;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.lab-startup .lab-accordion-item.is-open {
+  border-color: #e6e8ee;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+/* 닫힘 상태 컴팩트 + 텍스트 키움(최종 요청 반영) */
+.lab-startup .lab-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 26px;
+  min-height: 72px;
+}
+
+.lab-startup .lab-accordion-item.is-open .lab-accordion-header {
+  padding: 22px 26px;
+}
+
+.lab-startup .lab-acc-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lab-startup .lab-acc-index {
+  color: var(--lab-orange);
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 28px;
+}
+
+.lab-startup .lab-acc-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.35;
+  color: #111827;
+}
+
+/* toggle: 원형/테두리/점 전부 제거 + 안전 */
+.lab-startup .lab-acc-toggle {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.lab-startup .lab-acc-toggle:focus,
+.lab-startup .lab-acc-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 본문: 닫힘 완전 0 + 연회색 배경 */
+.lab-startup .lab-accordion-body {
+  overflow: hidden;
+}
+
+.lab-startup .lab-accordion-body-inner {
+  max-height: 0;
+  padding: 0 26px;
+  background: #f3f4f6;
+  overflow: hidden;
+  border-top: 0;
+  transition: max-height 0.26s ease, padding 0.18s ease,
+    border-top-color 0.18s ease;
+}
+
+.lab-startup .lab-accordion-item.is-open .lab-accordion-body-inner {
+  max-height: 420px;
+  padding: 18px 26px 22px;
+  border-top: 1px solid #eef0f4;
+}
+
+.lab-startup .lab-acc-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #374151;
+  line-height: 1.85;
+  font-size: 14px;
+}
+
+/* chevron: border 방식(∧/∨) 하나로 통일 */
+.lab-startup .lab-acc-chevron::before,
+.lab-startup .lab-acc-chevron::after {
+  content: none !important;
+}
+
+.lab-startup .lab-acc-chevron {
+  width: 10px !important;
+  height: 10px !important;
+  display: inline-block !important;
+  border-right: 2px solid #111827 !important;
+  border-bottom: 2px solid #111827 !important;
+  transform: translateY(-1px) rotate(45deg) !important; /* 기본: 아래 */
+  transition: transform 0.18s ease !important;
+}
+
+.lab-startup .lab-accordion-item.is-open .lab-acc-chevron {
+  transform: translateY(1px) rotate(-135deg) !important;
+}
+
+/* =========================
+   Accordion title hover swap
+   ========================= */
+
+.lab-startup .lab-acc-title {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* 기본 텍스트 숨기기용 */
+.lab-startup .lab-acc-title::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(6px);
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #111827; /* ✅ 제목 톤과 동일 */
+
+  white-space: nowrap; /* ✅ 무조건 한 줄 */
+  overflow: visible;
+  text-overflow: clip; /* 혹시라도 넘치면 … */
+
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+/* hover 시 */
+.lab-startup .lab-accordion-item:hover .lab-acc-title {
+  color: transparent; /* 기존 제목 숨김 */
+}
+
+.lab-startup .lab-accordion-item:hover .lab-acc-title::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✅ hover 문장 '...' 안 나오게: 제목 영역 폭을 넓혀줌 (Startup only) */
+.lab-startup .lab-accordion-header {
+  gap: 16px;
+}
+
+.lab-startup .lab-acc-left {
+  flex: 1;
+  min-width: 0; /* ✅ 이게 있어야 ellipsis 안 생김(핵심) */
+}
+
+.lab-startup .lab-acc-title {
+  display: block; /* ✅ span 폭을 "사용가능한 폭"으로 */
+  width: 100%;
+  white-space: nowrap; /* ✅ 한 줄 유지 */
+}
+
+/* =========================
+   Accordion hover border (Startup only)
+   ========================= */
+
+/* 기본 상태 */
+.lab-startup .lab-accordion-item {
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* ✅ 마우스 오버 시 */
+.lab-startup .lab-accordion-item:hover {
+  border-color: var(--lab-orange);
+}
+
+/* 살짝 떠 보이게 (선택 – 지금 UI랑 잘 어울림) */
+.lab-startup .lab-accordion-item:hover {
+  box-shadow: 0 1px 1px rgba(255, 122, 26, 0.15);
+}
+
+/* ✅ 열려 있는 상태(is-open)는 hover 없어도 유지 */
+.lab-startup .lab-accordion-item.is-open {
+  border-color: var(--lab-orange);
+}
+
+/* 열려 있으면서 hover일 때도 동일하게 유지 */
+.lab-startup .lab-accordion-item.is-open:hover {
+  border-color: var(--lab-orange);
+}
+
+/* =========================================================
+   WHY CARDS (Startup only) : Full-bleed dark section + WHITE point
+   ========================================================= */
+
+.lab-startup .why-cards {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  overflow: hidden;
+  background: #f8fafc; /* 거의 흰색에 가까운 쿨톤 그레이 */
+}
+
+.lab-startup .why-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--lab-max-width, 1320px);
+  margin: 0 auto;
+  padding: 96px 24px 96px;
+}
+
+.lab-startup .why-head {
+  margin-bottom: 36px;
+}
+
+.lab-startup .why-kicker {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lab-orange, #ff7a1a);
+  margin-bottom: 10px;
+}
+
+.lab-startup .why-title {
+  font-size: 38px;
+  font-weight: 800;
+  margin: 0 0 14px;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.lab-startup .why-desc {
+  margin: 0;
+  color: #475569;
+  line-height: 1.85;
+  max-width: 920px;
+}
+
+/* grid */
+.lab-startup .why-grid {
+  display: flex;
+  gap: 28px;
+  margin-top: 26px;
+  align-items: stretch;
+}
+
+/* card */
+.lab-startup .why-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 480px; /* ✅ 요청: 세로 길이 조금 늘림 */
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgb(255, 255, 255);
+  transform: translateY(0);
+  transition: flex 0.35s ease, transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  cursor: default;
+  background: #0b1020;
+}
+
+/* 기본: 3개가 동일 폭 */
+.lab-startup .why-card {
+  flex: 1;
+  min-width: 0; /* 중요: 내부 텍스트 때문에 폭 계산 깨지는 거 방지 */
+  transition: flex 0.35s ease, transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* background image */
+.lab-startup .why-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.95) contrast(1.05);
+  transform: scale(1.02);
+  transition: opacity 0.28s ease, transform 0.45s ease;
+  opacity: 1;
+}
+
+/* front 가독성 오버레이 */
+.lab-startup .why-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 5, 18, 0.22),
+    rgba(3, 5, 18, 0.62)
+  );
+  transition: opacity 0.28s ease, background 0.28s ease;
+  opacity: 1;
+}
+
+/* number */
+.lab-startup .why-num {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* front */
+.lab-startup .why-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 26px;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.lab-startup .why-card-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* back */
+.lab-startup .why-back {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: 24px 26px 24px;
+  padding-top: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+.lab-startup .why-back-title {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.lab-startup .why-back-desc {
+  margin: 0;
+  margin-top: 90px;
+  font-size: 20px;
+  padding-top: 84px;
+  line-height: 1.75;
+  color: rgb(255, 255, 255);
+}
+
+/* ✅ hover expand 핵심 (이게 빠져서 안 커진 거임) */
+.lab-startup .why-grid:hover .why-card {
+  flex: 0.85;
+}
+.lab-startup .why-grid:hover .why-card:hover {
+  flex: 2.05;
+}
+
+/* 이미지 페이드 */
+.lab-startup .why-card:hover::before {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+/* 호버 배경: 솔리드 딥네이비 + 은은한 화이트 글로우 */
+.lab-startup .why-card:hover::after {
+  opacity: 1;
+  background: linear-gradient(135deg, #080e8a, #ff5e00);
+}
+
+/* front 숨김 */
+.lab-startup .why-card:hover .why-front {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* back 표시 */
+.lab-startup .why-card:hover .why-back {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2) 카드 hover 시 테두리 주황색 */
+.lab-startup .why-card:hover {
+  border-color: rgb(255, 255, 255) !important;
+}
+
+/* 접근성 */
+@media (max-width: 1024px) {
+  .lab-startup .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .lab-startup .why-card {
+    flex: initial;
+    min-height: 380px;
+  }
+}
+
+/* =========================================
+   CTA
+   ========================================= */
+.lab-cta {
+  background: #000000;
+  color: #fff;
+}
+
+.lab-cta-inner {
+  max-width: var(--lab-max-width);
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  text-align: center;
+}
+
+.lab-cta-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.lab-cta-desc {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.lab-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 44px; /* ← 여기서 간격 조절 */
+}
+
+.lab-cta-actions .lab-btn {
+  height: 48px;
+  padding: 0 30px;
+}
+
+.lab-btn-light {
+  background: #fff;
+  color: #111827;
+  border: none;
+}
+
+.lab-btn-light:hover {
+  background: #f3f4f6;
+}
+
+.lab-btn-outline-light {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: #fff;
+}
+
+.lab-btn-outline-light:hover {
+  background: rgba(15, 23, 42, 0.12);
+}
+
+/* =========================================
+   GLASS CTA BUTTON (유리 코팅 느낌)
+   ========================================= */
+.lab-cta-actions .lab-btn-glass {
+  position: relative;
+  overflow: hidden;
+
+  /* 글래스 기본 */
+  background: rgba(255, 255, 255, 0.92);
+  color: #0b0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+
+  /* 유리 림 + 은은한 그림자 */
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.lab-cta-actions .lab-btn-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  filter: saturate(1.05);
+}
+
+/* 유리 ‘광택’ (상단 하이라이트 레이어) */
+.lab-cta-actions .lab-btn-glass::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: -35%;
+  height: 90%;
+  border-radius: 999px;
+
+  background: radial-gradient(
+    closest-side at 50% 60%,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.2) 55%,
+    rgba(255, 255, 255, 0) 72%
+  );
+
+  transform: translateY(0);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* 유리 표면의 “빛 맺힘/스펙큘러” (살짝 움직이는 느낌) */
+.lab-cta-actions .lab-btn-glass::after {
+  content: "";
+  position: absolute;
+  inset: -40% -60%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.45) 48%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  transform: translateX(-30%) rotate(8deg);
+  opacity: 0.35;
+  pointer-events: none;
+
+  animation: glassSheen 2.8s ease-in-out infinite;
+}
+
+/* hover 시 유리 광택이 조금 더 살아남 */
+.lab-cta-actions .lab-btn-glass:hover::after {
+  opacity: 0.55;
+}
+
+@keyframes glassSheen {
+  0% {
+    transform: translateX(-45%) rotate(8deg);
+  }
+  55% {
+    transform: translateX(0%) rotate(8deg);
+  }
+  100% {
+    transform: translateX(35%) rotate(8deg);
+  }
+}
+
+/* =========================
+   CTA 버튼: Glass Pro
+   ========================= */
+.lab-cta-actions .lab-btn-glass-pro {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+
+  height: 52px; /* 존재감 살짝 */
+  padding: 0 34px;
+
+  /* 유리 바디 */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(245, 247, 255, 0.9)
+  );
+  color: #0b0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  /* 림라이트 + 깊이 */
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transform: translateZ(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+/* 버튼 안쪽 상단 유리 하이라이트 */
+.lab-cta-actions .lab-btn-glass-pro::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: -45%;
+  height: 95%;
+  border-radius: 999px;
+  background: radial-gradient(
+    closest-side at 50% 60%,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.25) 55%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* hover 때만 “코팅 광택”이 짧게 지나감 */
+.lab-cta-actions .lab-btn-glass-pro::after {
+  content: "";
+  position: absolute;
+  inset: -60% -70%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  transform: translateX(-55%) rotate(10deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lab-cta-actions .lab-btn-glass-pro:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.06);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+/* Halo(브랜드 오렌지) — 밋밋함 끝 */
+.lab-cta-actions .lab-btn-glass-pro:hover {
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.55), 0 0 26px rgba(255, 122, 0, 0.22),
+    /* 오렌지 은은 광 */ 0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+/* 광택 스윕은 hover 때만 1번 */
+.lab-cta-actions .lab-btn-glass-pro:hover::after {
+  opacity: 0.55;
+  animation: glassSheenOnce 1.05s ease-out;
+}
+
+@keyframes glassSheenOnce {
+  0% {
+    transform: translateX(-60%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(40%) rotate(10deg);
+  }
+}
+
+.lab-btn-glass-pro:hover {
+  letter-spacing: -0.01em;
+}
+
+.lab-btn-glass-pro {
+  animation: breathe 4.5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 1024px) {
+  .lab-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
+  }
+
+  .lab-tracks-inner {
+    padding: 64px 24px 80px;
+  }
+
+  .lab-tracks-grid,
+  .lab-steps-grid,
+  .lab-cards-grid,
+  .lab-metrics-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .lab-inner {
+    padding: 96px 20px 96px;
+  }
+
+  .lab-hero-inner {
+    padding-inline: 20px;
+  }
+
+  .lab-tracks-inner {
+    padding: 56px 20px 72px;
+  }
+
+  .lab-section-title {
+    font-size: 28px;
+  }
+
+  .lab-hero-title {
+    font-size: 36px;
+  }
+
+  .lab-section {
+    margin-bottom: 80px;
+  }
+}

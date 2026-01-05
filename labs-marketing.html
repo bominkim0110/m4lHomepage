@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MARKETING LAB | MEDI4LAB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 공통 CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- 마케팅랩 전용 CSS -->
+    <link rel="stylesheet" href="labs-marketing.css" />
+  </head>
+
+  <body class="lab-page lab-marketing">
+    <!-- ===== 글로벌 내비게이션 (Startup과 동일 톤) ===== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <img src="assets/logo-h.png" alt="MEDI4LAB" />
+        </a>
+
+        <nav class="nav">
+          <ul>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/#labs">4Labs</a></li>
+            <li><a href="/process.html">Process</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/news.html">News</a></li>
+            <li><a href="/index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO (1화면만) -->
+      <section class="mk-hero hero-video-bg">
+        <!-- 임의 영상: 나중에 교체 -->
+        <video
+          class="mk-hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/marketing/poster/marketing-hero-poster.jpg"
+        >
+          <source src="assets/MLINK/MLINK.mp4" type="video/mp4" />
+        </video>
+        <div class="mk-hero-overlay"></div>
+
+        <div class="mk-container mk-hero-inner">
+          <h1 class="mk-hero-title">
+            병원을 이해하는 팀이 만드는 '결과'가 남는 마케팅
+          </h1>
+          <p class="mk-hero-sub">
+            콘텐츠 제작부터 평가와 개선까지 놓치지 않습니다. 병원이 실제로
+            바뀌는 마케팅을 합니다.
+          </p>
+
+          <div class="scroll-down"><span></span></div>
+        </div>
+      </section>
+
+      <!-- 본문: 교차 섹션 + 슬라이더 -->
+      <section class="mk-body">
+        <div class="mk-container">
+          <div class="mk-sections">
+            <!-- 01 제작 스튜디오 -->
+            <section
+              id="mk-studio"
+              class="mk-xsec mk-xsec--loose"
+              data-autoplay="true"
+              data-interval="2600"
+            >
+              <div class="mk-x-media">
+                <div class="mk-slider" data-slider>
+                  <div class="mk-slides">
+                    <div class="mk-slide is-active">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      >
+                        <source src="assets/MLINK/1.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+
+                    <div class="mk-slide">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      >
+                        <source src="assets/MLINK/desk2.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+
+                    <div class="mk-slide">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      >
+                        <source src="assets/MLINK/desk3.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+
+                    <div class="mk-slide">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      >
+                        <source src="assets/MLINK/desk4.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+
+                    <div class="mk-slide">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      >
+                        <source
+                          src="assets/MLINK/banner.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <button
+                    class="mk-navbtn mk-prev"
+                    type="button"
+                    aria-label="prev"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    class="mk-navbtn mk-next"
+                    type="button"
+                    aria-label="next"
+                  >
+                    ›
+                  </button>
+                  <div class="mk-dots" aria-label="slider dots"></div>
+                </div>
+              </div>
+
+              <div class="mk-x-text">
+                <div class="mk-badge">01 · 제작 스튜디오</div>
+                <h2 class="mk-x-title">
+                  병원을 아는 실무진이<br />콘텐츠의 디테일까지 만듭니다.
+                </h2>
+                <p class="mk-x-sub">
+                  원내외에 필요한 이미지부터 영상까지 현장에서 바로 쓰이는
+                  결과물을 제작합니다.
+                </p>
+
+                <h3 class="mk-x-h3">제작 범위</h3>
+                <ul class="mk-x-list">
+                  <li>원내 이미지·배너·영상 제작</li>
+                  <li>외부 마케팅용 영상·숏폼 제작</li>
+                  <li>전문성 있는 문구·구성·자막 설계</li>
+                  <li>연간 기획을 통한 체계적인 관리</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- 02 내부 마케팅 (반대 배치) (✅ 붙임) -->
+            <section
+              id="mk-inhouse"
+              class="mk-xsec mk-xsec--reverse mk-xsec--tight"
+              data-autoplay="true"
+              data-interval="2400"
+            >
+              <div class="mk-x-media">
+                <div class="mk-slider" data-slider>
+                  <div class="mk-slides">
+                    <div class="mk-slide is-active">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/inhouse-main.jpg"
+                        alt="내부 마케팅 메인"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/inhouse-signage.jpg"
+                        alt="사인/안내물"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/inhouse-monitor.jpg"
+                        alt="원내 모니터"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/inhouse-event.jpg"
+                        alt="이벤트/공지"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/inhouse-flow.jpg"
+                        alt="환자 안내 흐름"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    class="mk-navbtn mk-prev"
+                    type="button"
+                    aria-label="prev"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    class="mk-navbtn mk-next"
+                    type="button"
+                    aria-label="next"
+                  >
+                    ›
+                  </button>
+                  <div class="mk-dots" aria-label="slider dots"></div>
+                </div>
+              </div>
+
+              <div class="mk-x-text">
+                <div class="mk-badge">02 · 내부 마케팅</div>
+                <h2 class="mk-x-title">
+                  병원 안에서 바로 효과가 나는<br />
+                  ‘내부 마케팅’을 정리합니다.
+                </h2>
+                <p class="mk-x-sub">
+                  병원을 내원한 환자에게 정확히 전달될 수 있도록 내부
+                  커뮤니케이션을 디자인합니다.
+                </p>
+
+                <h3 class="mk-x-h3">내부 마케팅이 강하면</h3>
+                <ul class="mk-x-list">
+                  <li>환자 안내가 명확해져 문의와 불만이 줄어듭니다.</li>
+                  <li>직원 설명 부담이 줄고 전달이 표준화됩니다.</li>
+                  <li>
+                    안내 혹은 변경 사항이 제대로 전달되어 반응이 빨라집니다.
+                  </li>
+                  <li>
+                    우리 병원이 무엇을 하고 있는지가 눈에 보이게 정리됩니다.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- 03 외부 마케팅 (✅ 띄움) -->
+            <section
+              id="mk-external"
+              class="mk-xsec mk-xsec--loose"
+              data-autoplay="true"
+              data-interval="2300"
+            >
+              <div class="mk-x-media">
+                <div class="mk-slider" data-slider>
+                  <div class="mk-slides">
+                    <div class="mk-slide is-active">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        poster="assets/marketing/poster/external-main.jpg"
+                      >
+                        <source
+                          src="assets/marketing/video/external-main.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/external-blog.jpg"
+                        alt="블로그"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/external-sns.jpg"
+                        alt="SNS"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/external-thumb.jpg"
+                        alt="썸네일/카피"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/external-flow.jpg"
+                        alt="유입 흐름"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    class="mk-navbtn mk-prev"
+                    type="button"
+                    aria-label="prev"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    class="mk-navbtn mk-next"
+                    type="button"
+                    aria-label="next"
+                  >
+                    ›
+                  </button>
+                  <div class="mk-dots" aria-label="slider dots"></div>
+                </div>
+              </div>
+
+              <div class="mk-x-text">
+                <div class="mk-badge">03 · 외부 마케팅</div>
+                <h2 class="mk-x-title">보이게 만들고 선택받게 만듭니다.</h2>
+                <p class="mk-x-sub">
+                  홈페이지·네이버 블로그·SNS을 하나의 흐름으로 설계해 유입하고
+                  신뢰도를 높여 상담으로 연결합니다.
+                </p>
+
+                <h3 class="mk-x-h3">운영 포인트</h3>
+                <ul class="mk-x-list">
+                  <li>
+                    데이터를 통한 지역/과목/키워드/관심사를 기반으로 콘텐츠를
+                    설계합니다.
+                  </li>
+                  <li>
+                    병원의 강점을 찾고 자연스럽게 전달되도록 톤과 룰을 잡습니다.
+                  </li>
+                  <li>
+                    노출 이후에 “신뢰가 쌓이도록” 콘텐츠의 흐름을 구성합니다.
+                  </li>
+                  <li>여러 플랫폼별 포맷을 다르게 제작 후 배포합니다.</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- 04 병원 평가단 (반대 배치) (✅ 붙임) -->
+            <section
+              id="mk-qa"
+              class="mk-xsec mk-xsec--reverse mk-xsec--tight"
+              data-autoplay="true"
+              data-interval="2500"
+            >
+              <div class="mk-x-media">
+                <div class="mk-slider" data-slider>
+                  <div class="mk-slides">
+                    <div class="mk-slide is-active">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/qa-main.jpg"
+                        alt="체험 기반 진단"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/qa-visit.jpg"
+                        alt="방문/대기/응대"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/qa-check.jpg"
+                        alt="체크리스트"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/qa-report.jpg"
+                        alt="리포트"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/qa-fix.jpg"
+                        alt="개선 반영"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    class="mk-navbtn mk-prev"
+                    type="button"
+                    aria-label="prev"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    class="mk-navbtn mk-next"
+                    type="button"
+                    aria-label="next"
+                  >
+                    ›
+                  </button>
+                  <div class="mk-dots" aria-label="slider dots"></div>
+                </div>
+              </div>
+
+              <div class="mk-x-text">
+                <div class="mk-badge">04 · 병원 평가단</div>
+                <h2 class="mk-x-title">
+                  마케팅을 하기 전에<br />
+                  먼저 직접 경험합니다.
+                </h2>
+                <p class="mk-x-sub">
+                  실제 체험 데이터를 바탕으로 병원의 개선점을 파악하고 빠르게
+                  반영합니다.
+                </p>
+
+                <h3 class="mk-x-h3">운영 방식</h3>
+                <ul class="mk-x-list">
+                  <li>
+                    접수/대기/설명/치료/수납까지 병원의 전 과정을 체험합니다.
+                  </li>
+                  <li>첫 방문과 마지막 방문에서 필요한 데이터를 수집합니다.</li>
+                  <li>
+                    병원의 현 문제점을 파악할 수 있도록 수집된 데이터를 레포트
+                    형태로 드립니다.
+                  </li>
+                  <li>
+                    결과가 남는 리포트로 공유하고 반영하여 실행까지 연결합니다.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- 05 판촉 홍보 (✅ 띄움) -->
+            <section
+              id="mk-promo"
+              class="mk-xsec mk-xsec--loose"
+              data-autoplay="true"
+              data-interval="2200"
+            >
+              <div class="mk-x-media">
+                <div class="mk-slider" data-slider>
+                  <div class="mk-slides">
+                    <div class="mk-slide is-active">
+                      <video
+                        class="mk-media"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        poster="assets/marketing/poster/promo-main.jpg"
+                      >
+                        <source
+                          src="assets/marketing/video/promo-main.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/promo-map.jpg"
+                        alt="타겟 지점(지도)"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/promo-flow.jpg"
+                        alt="유동/동선 분석"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/promo-item.jpg"
+                        alt="판촉물 추천"
+                      />
+                    </div>
+                    <div class="mk-slide">
+                      <img
+                        class="mk-media"
+                        src="assets/marketing/image/promo-field.jpg"
+                        alt="직원 직접 투입"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    class="mk-navbtn mk-prev"
+                    type="button"
+                    aria-label="prev"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    class="mk-navbtn mk-next"
+                    type="button"
+                    aria-label="next"
+                  >
+                    ›
+                  </button>
+                  <div class="mk-dots" aria-label="slider dots"></div>
+                </div>
+              </div>
+
+              <div class="mk-x-text">
+                <div class="mk-badge">05 · 판촉 홍보</div>
+                <h2 class="mk-x-title">
+                  판촉은 많이 하는 일이 아니라<br />
+                  잘 되는 곳에 정확히 하는 일입니다.
+                </h2>
+                <p class="mk-x-sub">
+                  개원 시점 뿐만 아니라 운영 중의 필요한 상황에서 빠르게 효과를
+                  만들어냅니다.
+                </p>
+
+                <h3 class="mk-x-h3">차별 포인트</h3>
+                <ul class="mk-x-list">
+                  <li>
+                    개원뿐 아니라 운영 중에도 ‘상황 대응’을 위한 판촉이
+                    가능합니다.
+                  </li>
+                  <li>다양한 경험 기반으로 효과가 좋은 판촉물을 추천합니다.</li>
+                  <li>
+                    유동인구 및 동선 데이터를 바탕으로 “될 곳과 될 시간만”
+                    타겟합니다.
+                  </li>
+                  <li>
+                    일용직이 아니라 회사 직원이 직접 뛰어 실행력과 결과물이
+                    다릅니다.
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ CTA는 mk-body / mk-container 밖으로 빼기 (STARTUP과 동일 구조) -->
+      <section class="lab-cta">
+        <div class="lab-cta-inner">
+          <h2 class="lab-cta-title">
+            마케팅을 관리하지 말고<br />병원이 바뀌는 구조를 만드세요.
+          </h2>
+          <p class="lab-cta-desc">
+            콘텐츠 제작부터 평가와 개선까지, 병원이 실제로 바뀌는 마케팅을
+            합니다.
+          </p>
+
+          <div class="lab-cta-actions">
+            <a href="/index.html#contact" class="lab-btn lab-btn-glass-pro">
+              마케팅 상담 신청
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="labs-marketing.js" defer></script>
+  </body>
+</html>
